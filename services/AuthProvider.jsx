@@ -1,11 +1,8 @@
 "use client"
-
-import React from 'react';
-
 const AuthProvider = ({children}) => {
     return (
         <div>
-           {children}
+            {children}
         </div>
     );
 };

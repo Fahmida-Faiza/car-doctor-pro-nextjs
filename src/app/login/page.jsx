@@ -1,19 +1,24 @@
 "use client"
 
+import { redirect } from 'next/dist/server/api-utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-
+import {signIn} from "next-auth/react"
 const page = () => {
     // login
     const handleLogin = async (event) => {
-        // event.preventDefault();
-        // const newUser = {
-        //     // name: event.target.name.value,
-        //     email: event.target.email.value,
-        //     password: event.target.password.value
-        // }
-        // console.log(newUser);
+        event.preventDefault();
+       const email= event.target.email.value;
+        const  password=  event.target.password.value;
+        const resp = signIn('credentials' ,{
+            email, 
+            password,
+             redirect: false
+        })
+        console.log(resp)
+        
+       
     }
     
     return (

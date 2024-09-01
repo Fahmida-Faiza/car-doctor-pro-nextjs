@@ -1,30 +1,20 @@
+// 
+"use client"
+
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
-    const navItems=[
 
-        {
-            title:"Home",
-            path:"/"
-        },
-        {
-            title:"About",
-            path:"/about"
-        },
-        {
-            title:"Services",
-            path:"/services"
-        },
-        {
-            title:"Blog",
-            path:"/blog"
-        },
-        {
-            title:"Contacts",
-            path:"/contacts"
-        },
-    ]
+const session = useSession()
+console.log(session)
+
+
+
+
+
+
     return (
         <div  className='mx-auto'>
             <div className="navbar text-black bg-base-100">
@@ -70,11 +60,39 @@ const Navbar = () => {
               </div>
                 </div>
                 <div className="navbar-end">
-                    <h1> <Link  className='btn btn-info' href={'/login'}>Login</Link></h1>
+                    {/* logout r kaj */}
+                    { !session.data ?
+                        <h1> <Link className='btn btn-accent' href={'/login'}>Login</Link></h1>:
+                        <button   className =" btn btn-warning" onClick={() =>  signOut()}>LogOut</button>
+                    }
                 </div>
             </div>
         </div>
     );
 };
+
+const navItems = [
+
+    {
+        title: "Home",
+        path: "/"
+    },
+    {
+        title: "About",
+        path: "/about"
+    },
+    {
+        title: "Services",
+        path: "/services"
+    },
+    {
+        title: "Blog",
+        path: "/blog"
+    },
+    {
+        title: "Contacts",
+        path: "/contacts"
+    },
+]
 
 export default Navbar;

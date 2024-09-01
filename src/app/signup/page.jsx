@@ -14,6 +14,22 @@ const SignUpPage = () => {
             password: event.target.password.value
         }
         console.log(newUser);
+        // api request korbo
+        const resp = await fetch("http://localhost:3000/signup/api" , {
+            method: "POST",
+            body :JSON.stringify(newUser),
+            headers : {
+                "content-type" :"application/json"
+            }
+
+        })
+        console.log(resp)
+
+// reset korey likha gula form er
+if(resp.status === 200){
+    event.target.reset()
+}
+        
     }
     // 
     return (

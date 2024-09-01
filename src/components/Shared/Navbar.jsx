@@ -70,7 +70,7 @@ const Navbar = () => {
               </div>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <h1> <Link  className='btn btn-info' href={'/login'}>Login</Link></h1>
                 </div>
             </div>
         </div>

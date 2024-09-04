@@ -1,5 +1,6 @@
 "use client"
 
+import SocialSignin from '@/components/Shared/SocialSignin';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -56,6 +57,11 @@ if(resp.status === 200){
                             <br />
 
                             <button type="submit" className='mt-4 btn btn-primary'>SignIn</button>
+
+                            <div className='text-center'>
+                                <h6>or Sign in with</h6>
+                                <SocialSignin />
+                            </div>
                         </form>
 
                         <h3 className=''>Already have an account <Link className='text-red-400 text-xl' href={'/login'}>Login</Link></h3>

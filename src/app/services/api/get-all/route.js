@@ -1,3 +1,6 @@
+
+// get all the database 
+
 import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server";
 

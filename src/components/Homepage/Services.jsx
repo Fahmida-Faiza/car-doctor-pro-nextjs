@@ -1,19 +1,12 @@
 import React from 'react';
 
 import ServiceCard from './ServiceCard';
+// api thikh e 
+import { getServices } from '../../../services/getServices';
 
 
 
 
-// load the database
-const getServices = async() =>{
-    const res = await fetch('http://localhost:3000/services/api/get-all')
-    const services = res.json()
-    return services;
-}
-
-
-// ////////
 
 
 

@@ -7,16 +7,13 @@ import React from 'react';
 
 const Navbar = () => {
 
-const session = useSession()
-console.log(session)
-
-
-
+    const session = useSession()
+    console.log(session)
 
 
 
     return (
-        <div  className='mx-auto'>
+        <div className='mx-auto'>
             <div className="navbar text-black bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -51,20 +48,33 @@ console.log(session)
                     <a className="btn btn-ghost text-xl">daisyUI</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-              <div className='flex items-center space-x-6'>
-               {
-                navItems.map((item) => (
-                        <Link href={item.path} key={item.path}>{item.title}</Link>
-                ))
-               }
-              </div>
-                </div>
-                <div className="navbar-end">
-                    {/* logout r kaj */}
-                    { !session.data ?
-                        <h1> <Link className='btn btn-accent' href={'/login'}>Login</Link></h1>:
-                        <button   className =" btn btn-warning" onClick={() =>  signOut()}>LogOut</button>
+                    <div className='flex items-center space-x-6'>
+                        {
+                            navItems.map((item) => (
+                                <Link href={item.path} key={item.path}>{item.title}</Link>
+                            ))
+                        }
+                    </div>
+                    <div className="navbar-end">
+                        {/* logout r kaj */}
+                        {!session.data ?
+                            <h1> <Link className='btn btn-accent' href={'/login'}>Login</Link></h1>
+                            :
+                            <button className=" btn btn-warning" onClick={() => signOut()}>LogOut</button>
+                        }
+
+                        {/* <button className=" btn btn-warning" onClick={() => signOut()}>LogOut</button> */}
+
+                        {/* {session?.status === 'loading' &&
+                        <h6>Loading....</h6>
                     }
+                    {session?.status === 'unauthenticated' &&
+                        <Link href="/login" className="btn btn-primary px-8">Login</Link>
+                    }
+                    {session?.status === 'authenticated' &&
+                        <button className="btn btn-outline btn-ghost px-8" onClick={() => signOut()}>Logout</button>
+                    } */}
+                    </div>
                 </div>
             </div>
         </div>

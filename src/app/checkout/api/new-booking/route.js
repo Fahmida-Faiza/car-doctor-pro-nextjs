@@ -1,4 +1,5 @@
 // insert data to the database in new booking order confirm button
+// save to the database
 
 import { connectDB } from "@/lib/connectDB";
 

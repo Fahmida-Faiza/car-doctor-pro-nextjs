@@ -16,18 +16,18 @@ const Page = () => {
         setBooking(data?.myBookings);
     };
 
-    // const handleDelete = async (id) => {
-    //     const deleted = await fetch(
-    //         `https://car-doctor-pro-nine.vercel.app/my-bookings/api/booking/${id}`, {
-    //         method: "DELETE",
-    //     }
-    //     );
-    //     const resp = await deleted.json();
-    //     if (resp?.response?.deletedCount > 0) {
-    //         toast.success(resp?.message)
-    //         loadData();
-    //     }
-    // };
+    const handleDelete = async (id) => {
+        const deleted = await fetch(
+            `http://localhost:3000/my-bookings/api/delete-booking/${id}`, {
+            method: "DELETE",
+        }
+        );
+        const resp = await deleted.json();
+        if (resp?.response?.deletedCount > 0) {
+          
+            loadData();
+        }
+    };
 
     useEffect(() => {
         loadData();
@@ -75,12 +75,12 @@ const Page = () => {
                                     <td>
                                         <div className="flex items-center space-x-3">
                                             <Link href={`/my-bookings/update/${_id}`}><button class="btn btn-primary">Edit</button></Link>
-                                            {/* <button
+                                            <button
                                                 onClick={() => handleDelete(_id)}
                                                 class="btn btn-error"
                                             >
                                                 Delete
-                                            </button> */}
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>

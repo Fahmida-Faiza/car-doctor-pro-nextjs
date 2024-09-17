@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { getServicesDetails } from '../../../../services/getServices';
 import { useSession } from 'next-auth/react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Checkout = ({ params }) => {
     const { data } = useSession();
@@ -37,6 +38,9 @@ const Checkout = ({ params }) => {
         }
     })
     console.log(resp)
+    const response = await resp?.json()
+    toast.success(response?.message)
+    event.target.reset()
 
 
     }

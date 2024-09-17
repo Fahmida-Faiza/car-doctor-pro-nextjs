@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-// import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const Page = () => {
     const session = useSession();
@@ -18,11 +18,12 @@ const Page = () => {
 
     const handleDelete = async (id) => {
         const deleted = await fetch(
-            `http://localhost:3000/my-bookings/api/delete-booking/${id}`, {
+            `http://localhost:3000/my-bookings/api/booking/${id}`, {
             method: "DELETE",
         }
         );
         const resp = await deleted.json();
+        console.log(resp)
         if (resp?.response?.deletedCount > 0) {
           
             loadData();
@@ -35,7 +36,7 @@ const Page = () => {
 
     return (
         <div className="container mx-auto">
-            {/* <ToastContainer /> */}
+            <ToastContainer />
             <div className="relative  h-72">
                 <Image
                     className="absolute h-72 w-full left-0 top-0 object-cover"

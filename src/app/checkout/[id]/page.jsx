@@ -54,7 +54,7 @@ const Checkout = ({ params }) => {
     return (
         <div>
             <div className="container mx-auto">
-                {/* <ToastContainer /> */}
+                <ToastContainer />
                 <div className="relative  h-72">
                     <Image
                         className="absolute h-72 w-full left-0 top-0 object-cover"

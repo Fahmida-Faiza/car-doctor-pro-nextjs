@@ -19,22 +19,19 @@ export const DELETE = async (request, { params }) => {
 };
 
 
-////////////////update
+////////////////updateb
 export const PATCH = async (request, { params }) => {
   const db = await connectDB();
   const bookingsCollection = db.collection("bookings");
-  const {date, phone, address} = await request.json()
+  const updateDoc = await request.json()
   try {
-    const resp = await bookingsCollection.
-    updateOne(
+    const resp = await bookingsCollection.updateOne(
       {
       _id: new ObjectId(params.id) },
       {
           $set:{
 
-           date,
-           phone,
-           address,
+         ...updateDoc
           },
         },
           {
@@ -56,7 +53,7 @@ export const PATCH = async (request, { params }) => {
 
 
 
-// get one
+// get one 
 export const GET = async (request, { params }) => {
   const db = await connectDB();
   const bookingsCollection = db.collection("bookings");
@@ -66,7 +63,7 @@ export const GET = async (request, { params }) => {
     });
     return NextResponse.json({
       message: "booking found",
-      response: resp,
+      data: resp,
     });
   } catch (error) {
     return NextResponse.json({ message: "Something Went Wrong" });
